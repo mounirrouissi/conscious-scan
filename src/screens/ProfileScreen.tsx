@@ -428,6 +428,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.md,
+    paddingTop: spacing.lg, // Lower the header icons
   },
   backButton: {
     padding: spacing.xs,

@@ -382,6 +382,11 @@ export const allergyOptions = [
   'Sulfites',
   'Latex',
   'Fragrance',
+  'Corn',
+  'Mustard',
+  'Celery',
+  'Lupine',
+  'Molluscs',
 ];
 
 export const sensitivityOptions = [
@@ -395,6 +400,10 @@ export const sensitivityOptions = [
   'Formaldehyde',
   'Silicones',
   'Retinoids',
+  'Salicylates',
+  'Coconut',
+  'Palm Oil',
+  'Nickel',
 ];
 
 export const dietaryOptions = [
@@ -404,8 +413,11 @@ export const dietaryOptions = [
   'Kosher',
   'Gluten-Free',
   'Dairy-Free',
+  'Nut-Free',
   'Organic Only',
   'Non-GMO',
+  'Keto-Friendly',
+  'Paleo',
 ];
 
 export const priorityOptions = [
@@ -419,4 +431,6 @@ export const priorityOptions = [
   'Reef-Safe',
   'Fragrance-Free',
   'Hypoallergenic',
+  'Fair Trade',
+  'Plastic-Free',
 ];

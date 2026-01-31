@@ -29,7 +29,7 @@ const steps = [
   {
     id: 'welcome',
     icon: 'sparkles',
-    title: 'Welcome to ConsciousScan',
+    title: 'Welcome to PurePick',
     subtitle: "Let's personalize your experience in just a few steps",
   },
   {
@@ -212,7 +212,8 @@ const styles = StyleSheet.create({
   progressContainer: {
     flexDirection: 'row',
     paddingHorizontal: spacing.md,
-    paddingTop: spacing.md,
+    paddingTop: spacing.lg,
+    paddingBottom: spacing.sm,
     gap: spacing.xs,
   },
   progressBar: {

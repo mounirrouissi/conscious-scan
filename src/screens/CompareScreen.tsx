@@ -227,6 +227,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.md,
+    paddingTop: spacing.lg, // Lower the header icons
   },
   backButton: {
     padding: spacing.xs,
@@ -420,6 +421,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: spacing.sm,
     right: spacing.sm,
+    backgroundColor: colors.white,
+    borderRadius: borderRadius.full,
+    padding: spacing.xs,
+    ...shadows.sm,
+    zIndex: 10,
   },
   emptyProducts: {
     backgroundColor: colors.surfaceSecondary,

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ConsciousScan",
-    "slug": "conscious-scan",
+    "name": "PurePick",
+    "slug": "pure-pick",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,10 +14,17 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.consciousscan.app",
+      "bundleIdentifier": "com.mounirrouissi.purepick",
+      "buildNumber": "1",
       "infoPlist": {
-        "NSCameraUsageDescription": "ConsciousScan needs camera access to scan product barcodes and ingredient lists.",
-        "NSPhotoLibraryUsageDescription": "ConsciousScan needs photo library access to analyze product images."
+        "NSCameraUsageDescription": "PurePick needs camera access to scan product barcodes and ingredient lists.",
+        "NSPhotoLibraryUsageDescription": "PurePick needs photo library access to analyze product images.",
+        "NSPhotoLibraryAddUsageDescription": "PurePick needs permission to save product images to your photo library.",
+        "NSLocalNetworkUsageDescription": "PurePick uses local network to communicate with your device.",
+        "NSBonjourServiceTypes": ["_http._tcp"]
+      },
+      "config": {
+        "usesNonExemptEncryption": false
       }
     },
     "android": {
@@ -25,10 +32,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#10B981"
       },
-      "package": "com.consciousscan.app",
+      "package": "com.mounirrouissi.purepick",
+      "versionCode": 1,
       "permissions": [
         "CAMERA",
-        "READ_EXTERNAL_STORAGE"
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
       ]
     },
     "web": {
@@ -39,20 +48,21 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Allow ConsciousScan to access your camera to scan products."
+          "cameraPermission": "Allow PurePick to access your camera to scan products."
         }
       ],
       [
         "expo-image-picker",
         {
-          "photosPermission": "Allow ConsciousScan to access your photos to analyze product images."
+          "photosPermission": "Allow PurePick to access your photos to analyze product images."
         }
       ]
     ],
     "extra": {
       "eas": {
         "projectId": "your-project-id"
-      }
+      },
+      "EXPO_PUBLIC_WORKER_URL": "https://purepick-api-proxy.mounirrouissi2.workers.dev/"
     }
   }
 }

@@ -104,17 +104,55 @@ export const ScanScreen: React.FC<ScanScreenProps> = ({ onNavigate, onBack }) =>
       // Use Google Cloud Vision API
       const result = await analyzeProductImage(imageUri);
       
-      setExtractedText(result.extractedText);
+      // Extract and clean ingredients from OCR text
+      const { extractIngredientsFromText } = await import('../services/analysisService');
+      const cleanedIngredients = extractIngredientsFromText(result.extractedText);
+      
+      console.log('Raw OCR text length:', result.extractedText.length);
+      console.log('Raw OCR text:', result.extractedText.substring(0, 200) + '...');
+      console.log('Cleaned ingredients length:', cleanedIngredients.length);
+      console.log('Cleaned ingredients:', cleanedIngredients.substring(0, 200) + '...');
+      
+      // Always use cleaned text if available, otherwise use raw OCR
+      const finalText = cleanedIngredients && cleanedIngredients.trim().length > 5 
+        ? cleanedIngredients 
+        : result.extractedText;
+      
+      console.log('Final text to use:', finalText.substring(0, 200) + '...');
+      setExtractedText(finalText);
+      
       setSuggestedCategory(result.suggestedCategory);
       setSelectedCategory(result.suggestedCategory);
       
       // Try to extract product name and brand from text
       const lines = result.extractedText.split('\n').filter(l => l.trim());
       if (lines.length > 0) {
-        setProductName(lines[0].substring(0, 50));
+        // Look for product name (avoid nutrition facts, ingredients, etc.)
+        const productLine = lines.find(line => {
+          const lower = line.toLowerCase();
+          return !lower.includes('nutrition') && 
+                 !lower.includes('ingredient') && 
+                 !lower.includes('serving') &&
+                 !lower.includes('calorie') &&
+                 line.length > 3 && line.length < 50;
+        });
+        if (productLine) {
+          setProductName(productLine.substring(0, 50));
+        }
       }
       if (lines.length > 1) {
-        setBrandName(lines[1].substring(0, 30));
+        // Look for brand name
+        const brandLine = lines.find((line, index) => {
+          const lower = line.toLowerCase();
+          return index < 5 && // Only check first few lines
+                 !lower.includes('nutrition') && 
+                 !lower.includes('ingredient') && 
+                 !lower.includes('serving') &&
+                 line.length > 2 && line.length < 30;
+        });
+        if (brandLine && brandLine !== productName) {
+          setBrandName(brandLine.substring(0, 30));
+        }
       }
       
       setScanStep('category');
@@ -221,12 +259,23 @@ export const ScanScreen: React.FC<ScanScreenProps> = ({ onNavigate, onBack }) =>
       
       const ingredientText = manualIngredients || extractedText;
       
-      if (!ingredientText.trim()) {
-        Alert.alert('Error', 'No ingredients found. Please enter ingredients manually.');
-        setShowManualInput(true);
-        setIsProcessing(false);
+      // More lenient validation - allow nutrition tables and short text
+      if (!ingredientText || ingredientText.trim().length < 5) {
+        Alert.alert(
+          'No Data Found', 
+          'Could not extract ingredients or nutrition information. Would you like to enter it manually?',
+          [
+            { text: 'Cancel', onPress: () => setIsProcessing(false) },
+            { text: 'Enter Manually', onPress: () => {
+              setShowManualInput(true);
+              setIsProcessing(false);
+            }},
+          ]
+        );
         return;
       }
+
+      console.log('Creating product with text:', ingredientText.substring(0, 100) + '...');
 
       // createProductFromScan is now async (uses LLM)
       const product = await createProductFromScan(
@@ -287,7 +336,7 @@ export const ScanScreen: React.FC<ScanScreenProps> = ({ onNavigate, onBack }) =>
           <Ionicons name="camera-outline" size={64} color={colors.textMuted} />
           <Text style={styles.permissionTitle}>Camera Permission Required</Text>
           <Text style={styles.permissionText}>
-            ConsciousScan needs camera access to scan product barcodes and ingredient lists.
+            PurePick needs camera access to scan product barcodes and ingredient lists.
           </Text>
           <Button title="Grant Permission" onPress={requestPermission} />
           <Button title="Go Back" onPress={onBack} variant="ghost" />
@@ -547,6 +596,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.md,
+    paddingTop: spacing.lg, // Lower the header icons
   },
   backButton: {
     padding: spacing.xs,

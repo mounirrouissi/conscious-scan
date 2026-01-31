@@ -29,7 +29,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
         <View style={styles.header}>
           <View>
             <Text style={styles.greeting}>Hello there! 👋</Text>
-            <Text style={styles.title}>ConsciousScan</Text>
+            <Text style={styles.title}>PurePick</Text>
           </View>
           <TouchableOpacity
             style={styles.profileButton}

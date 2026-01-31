@@ -27,8 +27,8 @@ const defaultProfile: UserProfile = {
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-const PROFILE_KEY = '@consciousScan_profile';
-const PRODUCTS_KEY = '@consciousScan_products';
+const PROFILE_KEY = '@purePick_profile';
+const PRODUCTS_KEY = '@purePick_products';
 
 export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [profile, setProfile] = useState<UserProfile>(defaultProfile);

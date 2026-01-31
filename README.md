@@ -1,4 +1,4 @@
-# ConsciousScan 🔍
+# PurePick 🔍
 
 An AI-powered mobile app for analyzing product ingredients and making informed consumer choices. Built with React Native and Expo.
 
@@ -176,4 +176,4 @@ For support, email [your-email] or open an issue on GitHub.
 
 ---
 
-Made with ❤️ for conscious consumers everywhere.
+Made with ❤️ for mindful consumers everywhere.

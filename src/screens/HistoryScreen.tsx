@@ -12,7 +12,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useUser } from '../context/UserContext';
 import { ProductCard } from '../components/ProductCard';
 import { Button } from '../components/Button';
-import { colors, spacing, fontSize, fontWeight, borderRadius } from '../constants/theme';
+import { colors, spacing, fontSize, fontWeight, borderRadius, shadows } from '../constants/theme';
 
 interface HistoryScreenProps {
   onNavigate: (screen: string, params?: any) => void;
@@ -186,6 +186,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.md,
+    paddingTop: spacing.lg, // Lower the header icons
   },
   backButton: {
     padding: spacing.xs,
@@ -274,11 +275,13 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     position: 'absolute',
-    top: spacing.md,
-    right: spacing.md,
-    padding: spacing.xs,
-    backgroundColor: colors.danger + '15',
+    top: spacing.sm,
+    right: spacing.sm,
+    padding: spacing.sm,
+    backgroundColor: colors.white,
     borderRadius: borderRadius.full,
+    ...shadows.sm,
+    zIndex: 10,
   },
   emptyState: {
     flex: 1,

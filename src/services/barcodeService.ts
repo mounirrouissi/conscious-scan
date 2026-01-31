@@ -21,7 +21,7 @@ export async function lookupBarcode(barcode: string): Promise<BarcodeProduct> {
       `https://world.openfoodfacts.org/api/v2/product/${barcode}.json`,
       {
         headers: {
-          'User-Agent': 'ConsciousScan/1.0 (contact@example.com)',
+          'User-Agent': 'PurePick/1.0 (contact@example.com)',
         },
       }
     );
@@ -119,7 +119,7 @@ export async function searchProducts(query: string, limit: number = 10): Promise
       `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(query)}&search_simple=1&action=process&json=1&page_size=${limit}`,
       {
         headers: {
-          'User-Agent': 'ConsciousScan/1.0 (contact@example.com)',
+          'User-Agent': 'PurePick/1.0 (contact@example.com)',
         },
       }
     );
