@@ -21,7 +21,9 @@
         "NSPhotoLibraryUsageDescription": "PurePick needs photo library access to analyze product images.",
         "NSPhotoLibraryAddUsageDescription": "PurePick needs permission to save product images to your photo library.",
         "NSLocalNetworkUsageDescription": "PurePick uses local network to communicate with your device.",
-        "NSBonjourServiceTypes": ["_http._tcp"]
+        "NSBonjourServiceTypes": [
+          "_http._tcp"
+        ]
       },
       "config": {
         "usesNonExemptEncryption": false
@@ -35,9 +37,11 @@
       "package": "com.mounirrouissi.purepick",
       "versionCode": 1,
       "permissions": [
-        "CAMERA",
-        "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE"
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
       ]
     },
     "web": {
@@ -60,7 +64,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "your-project-id"
+        "projectId": "cf22f482-f2ed-4566-a52f-b09624e12934"
       },
       "EXPO_PUBLIC_WORKER_URL": "https://purepick-api-proxy.mounirrouissi2.workers.dev/"
     }
