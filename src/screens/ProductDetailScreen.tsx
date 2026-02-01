@@ -362,6 +362,12 @@ export const ProductDetailScreen: React.FC<ProductDetailScreenProps> = ({
           )}
         </View>
 
+        <View style={styles.bottomDisclaimer}>
+          <Text style={styles.bottomDisclaimerText}>
+            AI-generated insights. Consult a doctor for medical advice.
+          </Text>
+        </View>
+
         <View style={{ height: 100 }} />
       </ScrollView>
 
@@ -735,5 +741,16 @@ const styles = StyleSheet.create({
     fontSize: fontSize.sm,
     color: colors.text,
     paddingVertical: spacing.xs,
+  },
+  bottomDisclaimer: {
+    paddingHorizontal: spacing.xl,
+    paddingBottom: spacing.sm,
+    alignItems: 'center',
+  },
+  bottomDisclaimerText: {
+    fontSize: fontSize.xs,
+    color: colors.textMuted,
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
 });

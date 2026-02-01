@@ -17,7 +17,7 @@
       "bundleIdentifier": "com.mounirrouissi.purepick",
       "buildNumber": "1",
       "infoPlist": {
-        "NSCameraUsageDescription": "PurePick needs camera access to scan product barcodes and ingredient lists.",
+        "NSCameraUsageDescription": "PurePick needs camera access to scan food ingredient labels and provide health ratings.",
         "NSPhotoLibraryUsageDescription": "PurePick needs photo library access to analyze product images.",
         "NSPhotoLibraryAddUsageDescription": "PurePick needs permission to save product images to your photo library.",
         "NSLocalNetworkUsageDescription": "PurePick uses local network to communicate with your device.",

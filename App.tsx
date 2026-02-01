@@ -10,9 +10,10 @@ import { ProductDetailScreen } from './src/screens/ProductDetailScreen';
 import { HistoryScreen } from './src/screens/HistoryScreen';
 import { CompareScreen } from './src/screens/CompareScreen';
 import { ProfileScreen } from './src/screens/ProfileScreen';
+import { AIConsentModal } from './src/components/AIConsentModal';
 import { colors } from './src/constants/theme';
 
-type Screen = 
+type Screen =
   | 'Home'
   | 'Onboarding'
   | 'Scan'
@@ -68,7 +69,7 @@ function AppContent() {
             onComplete={() => setNavigation({ screen: 'Home' })}
           />
         );
-      
+
       case 'Scan':
         return (
           <ScanScreen
@@ -76,7 +77,7 @@ function AppContent() {
             onBack={goBack}
           />
         );
-      
+
       case 'ProductDetail':
         return (
           <ProductDetailScreen
@@ -85,7 +86,7 @@ function AppContent() {
             onNavigate={navigate}
           />
         );
-      
+
       case 'History':
         return (
           <HistoryScreen
@@ -93,7 +94,7 @@ function AppContent() {
             onBack={goBack}
           />
         );
-      
+
       case 'Compare':
         return (
           <CompareScreen
@@ -101,7 +102,7 @@ function AppContent() {
             onBack={goBack}
           />
         );
-      
+
       case 'Profile':
         return (
           <ProfileScreen
@@ -109,7 +110,7 @@ function AppContent() {
             onNavigate={(screen) => setNavigation({ screen: screen as Screen })}
           />
         );
-      
+
       case 'Home':
       default:
         return (
@@ -133,6 +134,7 @@ export default function App() {
     <SafeAreaProvider>
       <UserProvider>
         <AppContent />
+        <AIConsentModal />
       </UserProvider>
     </SafeAreaProvider>
   );
