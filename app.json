@@ -15,7 +15,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.mounirrouissi.purepick",
-      "buildNumber": "1",
+      "buildNumber": "2",
       "infoPlist": {
         "NSCameraUsageDescription": "PurePick needs camera access to scan food ingredient labels and provide health ratings.",
         "NSPhotoLibraryUsageDescription": "PurePick needs photo library access to analyze product images.",
